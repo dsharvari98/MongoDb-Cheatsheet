@@ -1,0 +1,31 @@
+For Database
+
+View all databases
+show dbs
+
+Create a new or switch databases
+use dbName
+
+View current Database
+db
+
+Delete Database 
+db.dropDatabase()
+
+MongoDb commands For Collections
+to show collections
+show collections
+
+Create a collection named 'myComments'
+db.createCollection('myComments')
+
+Drop a collection named 'myComments'
+db.myComments.drop()
+
+MongoDb commands For Rows
+Insert Rows
+db.comments.insert({
+    'name': 'Sharvari',
+    'lang':'Javascript',
+    'member_since': 5
+})
