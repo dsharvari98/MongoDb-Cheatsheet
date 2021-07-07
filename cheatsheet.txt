@@ -23,9 +23,71 @@ Drop a collection named 'myComments'
 db.myComments.drop()
 
 MongoDb commands For Rows
+
+Show all Rows in a Collection 
+db.comments.find()
+
+Show all Rows in a Collection (Prettified)
+db.comments.find().pretty()
+
+Find the first row matching the object
+db.comments.findOne({name: 'Sharvari'})
+
 Insert Rows
 db.comments.insert({
     'name': 'Sharvari',
     'lang':'Javascript',
     'member_since': 5
 })
+
+Insert many Rows
+db.comments.insertMany([{
+    'name': 'Sharvari',
+    'lang': 'JavaScript',
+    'member_since': 5
+    }, 
+    {'name': 'Shaurya',
+    'lang': 'Python',
+    'member_since': 3
+    },
+    {'name': 'Riya',
+    'lang': 'Java',
+    'member_since': 4
+}])
+
+Search in a MongoDb Database
+db.comments.find({lang:'Python'})
+
+Limit the number of rows in output
+db.comments.find().limit(2)
+
+Count the number of rows in the output
+db.comments.find().count()
+
+Update a row
+db.comments.update({name: 'Shaurya'},
+{'name': 'Sharvari',
+    'lang': 'JavaScript',
+    'member_since': 25
+}, {upsert: true})
+
+Mongodb Increment Operator
+db.comments.update({name: 'Riya'},
+{$inc:{
+    member_since: 2
+}})
+
+Mongodb Rename Operator
+db.comments.update({name: 'Riya'},
+{$rename:{
+    member_since: 'member'
+}})
+
+Delete Row 
+db.comments.remove({name: 'Sharvari'})
+
+Less than/Greater than/ Less than or Eq/Greater than or Eq
+db.comments.find({member_since: {$lt: 90}})
+db.comments.find({member_since: {$lte: 90}})
+db.comments.find({member_since: {$gt: 90}})
+db.comments.find({member_since: {$gte: 90}})
